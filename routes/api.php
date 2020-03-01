@@ -17,11 +17,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     echo 'test';
     return $request->user();
 });
-Route::middleware('api')->get('/post/{postId}', function ($postId) {
-    dd($postId);
-    return $request->user();
-});
-Route::middleware('api')->get('/post', function(Request $request){
-    echo 'test';
-    return $request->user();
-});
+
+Route::get('post', 'BlogController@index');
+Route::get('post/{postId}', 'BlogController@show');
+Route::post('post', 'BlogController@store');
+Route::put('post', 'BlogController@store');
+Route::delete('post', 'BlogController@destroy');
