@@ -1,22 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 
-export default class App extends Component {
+
+export default class App extends React.Component {
     render() {
         return (
-            <div className="container">
-                <div className="row justify-content-center">
-                    <div className="col-md-8">
-                        <div className="card">
-                            <p className="card-header">Example</p>
-
-                            <p className="card-body">I'm an example component!</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <BrowserRouter>
+                <Navigation/>
+                <Banner/>
+                <Switch>
+                    <Route exact path={'/'} component={Home}/>
+                    <Route path={'/blogTemplate'} component={Blog}/>
+                    <Route path={'/about'} component={About}/>
+                </Switch>
+            </BrowserRouter>
         );
     }
 }
 
-ReactDOM.render(<App />, document.getElementById('app-root'))
+ReactDOM.render( <App />, document.getElementById('app-root')
+);
