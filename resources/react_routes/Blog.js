@@ -1,10 +1,13 @@
-import React from 'react'
-import { blogPost } from '../store/Store'
+import React from 'react';
+import { blogPost } from '../store/Store';
 
 export class Blog extends React.Component {
-    state = {
-        content: blogPost
-    };
+    constructor(props){
+        super(props);
+        this.state = {
+            content: blogPost
+        }
+    }
 
     renderContent (content)  {
       const blogContent = [];

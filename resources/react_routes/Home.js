@@ -1,8 +1,10 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import App from '../js/components/App'
 
 export class Home extends React.Component {
     render() {
+      console.log('home')
         return (
             <section class="container">
                 <div class="row">
@@ -29,7 +31,7 @@ export class Home extends React.Component {
                               <div class="mx-auto">
                               <Link class="btn btn-secondary">
                                 Read More
-                              </Link> 
+                              </Link>
                               </div>
                               </div>
                         </div>         
@@ -57,7 +59,7 @@ export class Home extends React.Component {
                               <div class="mx-auto">
                               <Link class="btn btn-secondary">
                                 Read More
-                              </Link> 
+                              </Link>
                               </div>
                               </div>
                         </div>         
@@ -66,6 +68,6 @@ export class Home extends React.Component {
             </section>
         )
     }
-}
+};
 
-export default Home
+export default Home;

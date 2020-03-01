@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import { aboutMe } from '../store/Store';
+import App from '../js/components/App';
 
 export class About extends Component {
-    state = {
-        content: aboutMe
-    };
+    constructor(props){
+        super(props);
+        this.state = {
+            content: aboutMe
+        }
+    }
 
     renderContent (content)  {
         const blogContent = [];
@@ -17,15 +21,15 @@ export class About extends Component {
             <div class="col-lg-12">
                 {blogContent}
             </div>
-            );
+        );
     }
 
     render() {
-        const {blogContent} = this.state.content;
+        const { blogContent } = this.state.content;
         return (
             <section className="container">
                 <div class="row">
-                {this.renderContent(blogContent)}
+                    {this.renderContent(blogContent)}
                 </div>
             </section>
         )

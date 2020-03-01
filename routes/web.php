@@ -11,4 +11,6 @@
 |
 */
 
-Route::view('./{path?}', 'app');
+Route::get('/{reactRoutes?}',function(){
+    return view('app');
+})->where('reactRoutes', '^((?!api).)*$'); 

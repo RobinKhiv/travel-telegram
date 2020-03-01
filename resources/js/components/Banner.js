@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Banner() {
+const Banner = () => {
     return (
         <div class="container">
             <div class="row">
@@ -11,3 +11,5 @@ export default function Banner() {
         </div>  
     );
 }
+
+export default Banner;

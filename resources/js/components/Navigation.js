@@ -1,7 +1,8 @@
-import React from 'react'
+import React from 'react';
 import { Link } from 'react-router-dom';
+import App from '../../js/components/App';
 
-export default function Navigation() {
+const Navigation = () => {
     return (
         <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark" >
             <Link to="/" class="navbar-brand">
@@ -45,3 +46,5 @@ export default function Navigation() {
         </nav>
     )
 }
+
+export default Navigation
