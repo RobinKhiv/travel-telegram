@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Blog;
+use App\BlogContent;
+use App\Http\Requests;
+use App\Http\Resources\Blog as BlogResource;
+use Illuminate\Support\Facades\DB;
 
 class BlogController extends Controller
 {
@@ -13,7 +18,14 @@ class BlogController extends Controller
      */
     public function index()
     {
-        //
+        //get all blogs
+        //$blog = Blog::paginate(15);
+        $blog = BlogContent::with('blog')->where('type', '=','intro')->get();
+        // $blog = DB::table('blogContent')
+        //     ->join('blog', 'blog.id', '=','blogContent.blog_id')
+        //     ->where('blogContent.type', '=', 'intro')
+        //     ->get();
+        return BlogResource::collection($blog);
     }
 
     /**
@@ -45,7 +57,9 @@ class BlogController extends Controller
      */
     public function show($id)
     {
-        //
+        //get blog
+        $blog = BlogContent::where('blog_id', '=', $id)->orderBy('block_number', 'ASC')->get();
+        return BlogResource::collection($blog);
     }
 
     /**

@@ -14,12 +14,11 @@ use Illuminate\Http\Request;
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    echo 'test';
     return $request->user();
 });
 
-Route::get('post', 'BlogController@index');
-Route::get('post/{postId}', 'BlogController@show');
+Route::get('blog', 'BlogController@index');
+Route::get('blog/{postId}', 'BlogController@show');
 Route::post('post', 'BlogController@store');
-Route::put('post', 'BlogController@store');
+Route::patch('post/{postId}', 'BlogController@update');
 Route::delete('post', 'BlogController@destroy');
