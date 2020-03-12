@@ -6534,7 +6534,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "main{\r\n    margin-top: 3em;\r\n}", ""]);
+exports.push([module.i, "main {\r\n    margin-top: 3em;\r\n}", ""]);
 
 // exports
 
@@ -70526,7 +70526,9 @@ function blogCard(props) {
     if (blog.type === 'img_main') {
       cardImage.src = blog.content;
       cardImage.alt = blog.alt;
-    } else text = blog.content;
+    } else {
+      if (blog.content.length >= 220) text = blog.content.substring(0, 220) + "...";else text = blog.content + '..';
+    }
   });
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "mt-3 col-lg-4 d-flex align-items-stretch mb-4"

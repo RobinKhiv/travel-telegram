@@ -12,8 +12,12 @@ export default function blogCard(props) {
             cardImage.src = blog.content;
             cardImage.alt = blog.alt;
         }
-        else
-            text = blog.content;
+        else{
+            if(blog.content.length >= 220)
+                text = blog.content.substring(0, 220) + "...";
+            else
+                text = blog.content + '..';
+        }
     })
 
     return (
