@@ -16,10 +16,10 @@ class CreateBlogCategory extends Migration
         Schema::create('blog_category', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('category_id');
-            $table->unsignedBigInteger('blog_id');
+            $table->uuid('blog_id');
             $table->timestamps();
 
-            $table->foreign('blog_id')->references('id')->on('blog');
+            $table->foreign('blog_id')->references('blog_id')->on('blog');
             $table->foreign('category_id')->references('id')->on('categories');
         });
     }

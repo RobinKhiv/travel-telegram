@@ -15,6 +15,7 @@ class CreateBlogTable extends Migration
     {
         Schema::create('blog', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->uuid('blog_id')->unique();
             $table->unsignedBigInteger('user_id');
             $table->string('title');
             $table->boolean('published')->default(0);

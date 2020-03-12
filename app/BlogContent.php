@@ -11,6 +11,6 @@ class BlogContent extends Model
     protected $table = 'blog_content';
     public function blog()
     {
-        return $this->hasMany(Blog::class, 'id', 'blog_id');
+        return $this->hasMany(Blog::class, 'blog_id', 'blog_id');
     }
 }

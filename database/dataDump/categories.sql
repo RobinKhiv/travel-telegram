@@ -7,5 +7,7 @@ VALUES
     ('Restaurant'),
     ('Guides'),
     ('Events'),
-    ('Festivals');
+    ('Festivals'),
+    ('California'),
+    ('Food');
 

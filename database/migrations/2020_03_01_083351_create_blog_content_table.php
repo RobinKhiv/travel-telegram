@@ -15,7 +15,7 @@ class CreateBlogContentTable extends Migration
     {
         Schema::create('blog_content', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('blog_id');
+            $table->uuid('blog_id')->nullable();
             $table->string('type');
             $table->string('alt')->nullable();
             $table->unsignedBigInteger('size')->nullable();
@@ -23,7 +23,7 @@ class CreateBlogContentTable extends Migration
             $table->text('content')->nullable();
             $table->timestamps();
 
-            $table->foreign('blog_id')->references('id')->on('blog');
+            $table->foreign('blog_id')->references('blog_id')->on('blog');
         });
     }
 

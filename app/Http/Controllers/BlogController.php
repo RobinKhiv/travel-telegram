@@ -20,7 +20,9 @@ class BlogController extends Controller
     {
         //get all blogs
         //$blog = Blog::paginate(15);
-        $blog = BlogContent::with('blog')->where('type', '=','intro')->get();
+        $blog = Blog::with(['blog_content' => function($query) {
+            $query->where('type', '=', 'img_main')->orWhere('type', '=','intro');
+        }])->where('blog_id', '!=', 'a41f5295-8535-4eaa-97a3-ddcdf4a86a47')->orderBy('published_date', 'DESC')->get();
         // $blog = DB::table('blogContent')
         //     ->join('blog', 'blog.id', '=','blogContent.blog_id')
         //     ->where('blogContent.type', '=', 'intro')
