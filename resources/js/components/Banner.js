@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Banner = () => {
+const banner = () => {
     return (
         <div class="container">
             <div class="row">
@@ -12,4 +12,4 @@ const Banner = () => {
     );
 }
 
-export default Banner;
+export default banner;
