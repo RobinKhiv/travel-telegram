@@ -1,9 +1,22 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-export default function BlogCategory() {
-    return (
-        <div>
-            
-        </div>
-    )
+export class BlogCategory extends Component {
+    constructor(){
+        super();
+        this.state = {
+
+        }
+    }
+    componentDidMount(){
+        
+    }
+    render() {
+        return (
+            <div>
+                
+            </div>
+        )
+    }
 }
+
+export default BlogCategory

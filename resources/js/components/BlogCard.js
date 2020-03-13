@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import App from './App';
 import '../../css/BlogCard.css';
 
-const blogCard = props => {
+const blog_card = props => {
     const cardImage = {src:'', alt:''};
     let text = '';
 
@@ -12,7 +12,7 @@ const blogCard = props => {
             cardImage.src = blog.content;
             cardImage.alt = blog.alt;
         }
-        else{
+        else {
             if(blog.content.length >= 220)
                 text = blog.content.substring(0, 220) + "...";
             else
@@ -22,13 +22,13 @@ const blogCard = props => {
 
     return (
         <div className="mt-3 col-lg-4 d-flex align-items-stretch mb-4">
-            <div class="card">
+            <div className="card">
                 <img src={cardImage.src} className="card-img-top" alt={cardImage.alt}/>
                 <div class="card-body">
                     <h3 className="card-title">{props.title}</h3>
-                    <p  classname="card-text">{text}</p>  
+                    <p  className="card-text">{text}</p>  
                     <div className="mx-auto">
-                        <Link class="btn btn-secondary" to={`/blog/${props.blog_id}`}>
+                        <Link className="btn btn-secondary" to={`/blog/${props.blog_id}`}>
                         Read More
                         </Link>
                     </div>
@@ -37,4 +37,4 @@ const blogCard = props => {
         </div>
     )
 }
-export default blogCard;
+export default blog_card;
