@@ -77752,7 +77752,7 @@ var Navigation = function Navigation() {
   }, "Asia"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     "class": "nav-item"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/about",
+    to: "/blog/a41f5295-8535-4eaa-97a3-ddcdf4a86a47",
     "class": "nav-link"
   }, "About Me")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     "class": "nav-item"
@@ -77879,13 +77879,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Blog", function() { return Blog; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _store_Store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../store/Store */ "./resources/store/Store.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react_html_parser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-html-parser */ "./node_modules/react-html-parser/lib/index.js");
-/* harmony import */ var react_html_parser__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_html_parser__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _css_Blog_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../css/Blog.css */ "./resources/css/Blog.css");
-/* harmony import */ var _css_Blog_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_css_Blog_css__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_html_parser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-html-parser */ "./node_modules/react-html-parser/lib/index.js");
+/* harmony import */ var react_html_parser__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_html_parser__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _css_Blog_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../css/Blog.css */ "./resources/css/Blog.css");
+/* harmony import */ var _css_Blog_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_css_Blog_css__WEBPACK_IMPORTED_MODULE_3__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -77908,16 +77907,15 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-
 var Blog = /*#__PURE__*/function (_React$Component) {
   _inherits(Blog, _React$Component);
 
-  function Blog(props) {
+  function Blog() {
     var _this;
 
     _classCallCheck(this, Blog);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Blog).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Blog).call(this));
     _this.state = {
       content: []
     };
@@ -77930,7 +77928,7 @@ var Blog = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       var blog_id = this.props.match.params.blog_id;
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("/api/blog/".concat(blog_id)).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/blog/".concat(blog_id)).then(function (response) {
         var blog = response.data.data;
 
         _this2.setState({
@@ -77946,7 +77944,7 @@ var Blog = /*#__PURE__*/function (_React$Component) {
         if (element.type === 'paragraph' || element.type === 'intro') blogContent.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           "class": "text-body font-size-lg",
           key: element.id
-        }, react_html_parser__WEBPACK_IMPORTED_MODULE_3___default()(element.content)));else if (element.type === "img" || element.type === 'img_main') blogContent.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        }, react_html_parser__WEBPACK_IMPORTED_MODULE_2___default()(element.content)));else if (element.type === "img" || element.type === 'img_main') blogContent.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           key: element.id,
           "class": element.size + " mx-auto d-block mt-2 mb-2 img-fluid ",
           src: element.content,
@@ -77955,7 +77953,7 @@ var Blog = /*#__PURE__*/function (_React$Component) {
         }));else if (element.type === 'title' || element.type === 'big_title') blogContent.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
           "class": "h1",
           key: element.id
-        }, react_html_parser__WEBPACK_IMPORTED_MODULE_3___default()(element.content)));
+        }, react_html_parser__WEBPACK_IMPORTED_MODULE_2___default()(element.content)));
       });
       return blogContent;
     }
@@ -77963,7 +77961,6 @@ var Blog = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var blog_content = this.state.content;
-      console.log(blog_content);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "container mt-4"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

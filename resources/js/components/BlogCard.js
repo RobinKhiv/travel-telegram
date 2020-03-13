@@ -1,9 +1,9 @@
 import React from 'react';
-import '../../css/BlogCard.css';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import App from './App';
+import '../../css/BlogCard.css';
 
-export default function blogCard(props) {
+const blogCard = props => {
     const cardImage = {src:'', alt:''};
     let text = '';
 
@@ -19,7 +19,7 @@ export default function blogCard(props) {
                 text = blog.content + '..';
         }
     })
-    console.log(props);
+
     return (
         <div className="mt-3 col-lg-4 d-flex align-items-stretch mb-4">
             <div class="card">
@@ -37,3 +37,4 @@ export default function blogCard(props) {
         </div>
     )
 }
+export default blogCard;
