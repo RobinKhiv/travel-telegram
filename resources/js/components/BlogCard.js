@@ -19,7 +19,7 @@ export default function blogCard(props) {
                 text = blog.content + '..';
         }
     })
-
+    console.log(props);
     return (
         <div className="mt-3 col-lg-4 d-flex align-items-stretch mb-4">
             <div class="card">
@@ -28,7 +28,7 @@ export default function blogCard(props) {
                     <h3 className="card-title">{props.title}</h3>
                     <p  classname="card-text">{text}</p>  
                     <div className="mx-auto">
-                        <Link class="btn btn-secondary" to='/'>
+                        <Link class="btn btn-secondary" to={`/blog/${props.blog_id}`}>
                         Read More
                         </Link>
                     </div>

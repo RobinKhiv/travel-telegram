@@ -25,6 +25,7 @@ export class Home extends React.Component {
                     data.map(blog => 
                       <BlogCard 
                         key={blog.id} 
+                        blog_id={blog.blog_id}
                         blog_content={blog.blog_content}
                         title={blog.title}
                       />)
