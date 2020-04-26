@@ -15,12 +15,11 @@ class CreateBlogCategory extends Migration
     {
         Schema::create('blog_category', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('category_id');
-            $table->uuid('blog_id');
-            $table->timestamps();
-
+            $table->uuid('category_id')->nullable();
+            $table->uuid('blog_id')->nullable();
+            
             $table->foreign('blog_id')->references('blog_id')->on('blog');
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('category_id')->references('category_id')->on('categories');
         });
     }
 

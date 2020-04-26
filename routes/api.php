@@ -18,7 +18,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('blog', 'BlogController@index');
-Route::get('blog/{postId}', 'BlogController@show');
-Route::post('post', 'BlogController@store');
-Route::patch('post/{postId}', 'BlogController@update');
-Route::delete('post', 'BlogController@destroy');
+Route::get('blog/{post_id}', 'BlogController@show');
+Route::get('category/{category_id}', 'CategoryController@show');
+// Route::post('post', 'BlogController@store');
+// Route::patch('post/{postId}', 'BlogController@update');
+// Route::delete('post', 'BlogController@destroy');

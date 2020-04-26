@@ -20,8 +20,7 @@ class CreateBlogTable extends Migration
             $table->string('title');
             $table->boolean('published')->default(0);
             $table->date('published_date')->nullable();
-            $table->timestamps();
-
+            
             $table->foreign('user_id')->references('id')->on('users');  
         });
     }

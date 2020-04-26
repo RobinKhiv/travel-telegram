@@ -17,8 +17,8 @@ export default class App extends React.Component {
                     <Banner/>
                     <Switch>
                         <Route exact path={'/'} component={Home}/> 
+                        <Route exact path={'/blog/:blog_id'} component={Blog}/>
                         <Route path={'/:category_id'} component={BlogCategory}/>
-                        <Route path={'/blog/:blog_id'} component={Blog}/>
                     </Switch>
                 </main>
            </BrowserRouter>

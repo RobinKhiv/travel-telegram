@@ -4,7 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Blog;
-use App\Catgories;
+use App\Category;
+use App\BlogContent;
 
 class BlogCategory extends Model
 {
@@ -12,10 +13,10 @@ class BlogCategory extends Model
     protected $table = 'blog_category';
     public function blog()
     {
-        return $this->hasMany(Blog::class, 'id', 'blog_id');
+        return $this->hasOne(Blog::class, 'blog_id', 'blog_id')->orderBy('published_date');
     }
-    public function categories()
+    public function category()
     {
-        return $this->hasMany(Category::class, 'id', 'category_id');
+        return $this->hasOne(Category::class, 'id', 'category_id');
     }
 }

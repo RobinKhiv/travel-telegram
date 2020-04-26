@@ -8519,7 +8519,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".font-size-lg{\r\n    font-size: 1.2em;\r\n}", ""]);
+exports.push([module.i, ".font-size-lg{\r\n    font-size: 1.2em;\r\n}\r\n@media only screen and (min-width: 600px ){\r\n\r\n    .height-large-resp{\r\n        height: 18rem;\r\n        -o-object-fit: fill;\r\n           object-fit: fill;\r\n    }\r\n    .col-4half-resp{\r\n        height: 8.5rem;\r\n        -o-object-fit: cover;\r\n           object-fit: cover;\r\n    }\r\n}", ""]);
 
 // exports
 
@@ -77577,11 +77577,12 @@ var App = /*#__PURE__*/function (_React$Component) {
         path: '/',
         component: _react_routes_Home__WEBPACK_IMPORTED_MODULE_6__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-        path: '/:category_id',
-        component: _react_routes_BlogCategory__WEBPACK_IMPORTED_MODULE_7__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        exact: true,
         path: '/blog/:blog_id',
         component: _react_routes_Blog__WEBPACK_IMPORTED_MODULE_5__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        path: '/:category_id',
+        component: _react_routes_BlogCategory__WEBPACK_IMPORTED_MODULE_7__["default"]
       }))));
     }
   }]);
@@ -77609,13 +77610,13 @@ __webpack_require__.r(__webpack_exports__);
 
 var banner = function banner() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    "class": "container"
+    className: "container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    "class": "row"
+    className: "row"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    "class": "col-xl-12"
+    className: "col-xl-12"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    "class": "img-fluid",
+    className: "img-fluid",
     src: "https://mouthfuloftravel.files.wordpress.com/2018/03/cropped-mouthful-of-travel-02.jpg",
     alt: "banner"
   }))));
@@ -77645,7 +77646,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var blogCard = function blogCard(props) {
+var blog_card = function blog_card(props) {
   var cardImage = {
     src: '',
     alt: ''
@@ -77662,7 +77663,7 @@ var blogCard = function blogCard(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "mt-3 col-lg-4 d-flex align-items-stretch mb-4"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    "class": "card"
+    className: "card"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     src: cardImage.src,
     className: "card-img-top",
@@ -77672,16 +77673,16 @@ var blogCard = function blogCard(props) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
     className: "card-title"
   }, props.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-    classname: "card-text"
+    className: "card-text"
   }, text), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "mx-auto"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    "class": "btn btn-secondary",
+    className: "btn btn-secondary",
     to: "/blog/".concat(props.blog_id)
   }, "Read More")))));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (blogCard);
+/* harmony default export */ __webpack_exports__["default"] = (blog_card);
 
 /***/ }),
 
@@ -77703,10 +77704,14 @@ __webpack_require__.r(__webpack_exports__);
 var card_container = function card_container(props) {
   var data = props.data;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-    "class": "container"
+    className: "container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    "class": "row"
+    className: "row"
   }, data.length && data.map(function (blog) {
+    if (blog.category_id) {
+      blog = blog.blog;
+    }
+
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_BlogCard__WEBPACK_IMPORTED_MODULE_1__["default"], {
       key: blog.id,
       blog_id: blog.blog_id,
@@ -77743,7 +77748,7 @@ var navigation = function navigation() {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/",
     "class": "navbar-brand"
-  }, "Mouthful"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  }, "Feed Me"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     "class": "navbar-toggler",
     type: "button",
     "data-toggle": "collapse",
@@ -77892,13 +77897,41 @@ var Blog = /*#__PURE__*/function (_React$Component) {
         if (element.type === 'paragraph' || element.type === 'intro') blogContent.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           "class": "text-body font-size-lg",
           key: element.id
-        }, react_html_parser__WEBPACK_IMPORTED_MODULE_2___default()(element.content)));else if (element.type === "img" || element.type === 'img_main') blogContent.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          key: element.id,
-          "class": element.size + " mx-auto d-block mt-2 mb-2 img-fluid ",
-          src: element.content,
-          title: element.alt,
-          alt: element.alt
-        }));else if (element.type === 'title' || element.type === 'big_title') blogContent.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        }, react_html_parser__WEBPACK_IMPORTED_MODULE_2___default()(element.content)));else if (element.type === "img" || element.type === 'img_main') {
+          var elClass = ' mt-3 mb-3 img-fluid pr-1 pl-1 ';
+          var elStyle = {};
+          console.log(element.size);
+
+          if (Number(element.size) === 3.00) {
+            elClass += 'col-sm-3';
+            elStyle.width = 13 + 'rem';
+            elStyle.height = 12.5 + 'rem';
+            elStyle.objectFit = 'cover';
+          } else if (Number(element.size) === 4.00) {
+            console.log('entered');
+            elClass += 'col-sm-4 mb-4 height-large-resp';
+          } else if (Number(element.size) === 4.50) {
+            elClass += 'col-4half-resp col-md-4';
+          } else if (Number(element.size) === 6.00) {
+            elClass += ' col-md-6';
+            elStyle.height = 15 + 'rem';
+            elStyle.objectFit = 'cover';
+          } else if (Number(element.size) === 8.00) {
+            elClass += ' col-md-8 height-large-resp float-left';
+          } else {
+            elClass += 'mx-auto d-block';
+          }
+
+          console.log(elStyle);
+          blogContent.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            key: element.id,
+            "class": elClass,
+            style: elStyle,
+            src: element.content,
+            title: element.alt,
+            alt: element.alt
+          }));
+        } else if (element.type === 'title' || element.type === 'big_title') blogContent.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
           "class": "h1",
           key: element.id
         }, react_html_parser__WEBPACK_IMPORTED_MODULE_2___default()(element.content)));
@@ -77943,6 +77976,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BlogCategory", function() { return BlogCategory; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _js_components_CardContainer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../js/components/CardContainer */ "./resources/js/components/CardContainer.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -77962,6 +77998,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 
+
+
 var BlogCategory = /*#__PURE__*/function (_Component) {
   _inherits(BlogCategory, _Component);
 
@@ -77971,17 +78009,34 @@ var BlogCategory = /*#__PURE__*/function (_Component) {
     _classCallCheck(this, BlogCategory);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(BlogCategory).call(this));
-    _this.state = {};
+    _this.state = {
+      data: []
+    };
     return _this;
   }
 
   _createClass(BlogCategory, [{
     key: "componentDidMount",
-    value: function componentDidMount() {}
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      var category_id = this.props.match.params.category_id;
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/category/".concat(category_id)).then(function (response) {
+        var blogs = response.data.data;
+
+        _this2.setState({
+          data: blogs
+        });
+      });
+    }
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
+      var data = this.state.data;
+      console.log(data);
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_js_components_CardContainer__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        data: data
+      });
     }
   }]);
 
@@ -78005,8 +78060,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _js_components_BlogCard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../js/components/BlogCard */ "./resources/js/components/BlogCard.js");
-/* harmony import */ var _js_components_CardContainer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../js/components/CardContainer */ "./resources/js/components/CardContainer.js");
+/* harmony import */ var _js_components_CardContainer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../js/components/CardContainer */ "./resources/js/components/CardContainer.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -78024,7 +78078,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 
 
 
@@ -78061,7 +78114,7 @@ var Home = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var data = this.state.data;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_js_components_CardContainer__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_js_components_CardContainer__WEBPACK_IMPORTED_MODULE_2__["default"], {
         data: data
       });
     }

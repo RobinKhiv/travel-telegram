@@ -18,11 +18,9 @@ class CreateBlogContentTable extends Migration
             $table->uuid('blog_id')->nullable();
             $table->string('type');
             $table->string('alt')->nullable();
-            $table->unsignedBigInteger('size')->nullable();
+            $table->decimal('size', 4, 2)->nullable();
             $table->unsignedBigInteger('block_number')->nullable();
             $table->text('content')->nullable();
-            $table->timestamps();
-
             $table->foreign('blog_id')->references('blog_id')->on('blog');
         });
     }
