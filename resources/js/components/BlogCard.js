@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import App from './App';
+// import App from './App';
 import '../../css/BlogCard.css';
 
 const blog_card = props => {
@@ -25,7 +25,9 @@ const blog_card = props => {
             <div className="card">
                 <img src={cardImage.src} className="card-img-top" alt={cardImage.alt}/>
                 <div class="card-body">
-                    <h3 className="card-title">{props.title}</h3>
+                    <Link to={`/blog/${props.blog_id}`}>
+                        <h3 className="card-title">{props.title}</h3>
+                    </Link>
                     <p  className="card-text">{text}</p>  
                     <div className="mx-auto">
                         <Link className="btn btn-secondary" to={`/blog/${props.blog_id}`}>

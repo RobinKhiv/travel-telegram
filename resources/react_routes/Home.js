@@ -10,6 +10,7 @@ export class Home extends React.Component {
     }
   }
   componentDidMount(){
+    window.scrollTo(0, 0);
     axios.get('/api/blog')
       .then(response => {
         const data = response.data.data;

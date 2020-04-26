@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { aboutMe } from '../store/Store';
-import App from '../js/components/App';
+// import App from '../js/components/App';
 
 export class About extends Component {
     constructor(props){
@@ -26,7 +26,6 @@ export class About extends Component {
 
     render() {
         const { blogContent } = this.state.content;
-        const testString = "helllo my name is <strong>Robin</strong>"
         return (
             <section className="container">
                 <div class="row">

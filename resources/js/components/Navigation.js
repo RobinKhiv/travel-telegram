@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import App from '../../js/components/App';
+// import App from '../../js/components/App';
 
 const navigation = () => {
     return (
@@ -17,7 +17,7 @@ const navigation = () => {
                     <Link to='' class="nav-link">Home</Link>
                     </li>
                     <li class="nav-item dropdown">
-                        <Link to="/travel"class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <Link to="/fddd647d-7dd3-4faa-87f6-eaa38ede0f88"class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Travel
                         </Link>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">

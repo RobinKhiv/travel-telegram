@@ -4,7 +4,6 @@ import BlogCard from './BlogCard';
 const card_container = props => {
     const data = props.data;
     
-
     return (
         <section className="container">
             <div className="row">

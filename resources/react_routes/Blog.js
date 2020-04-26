@@ -7,15 +7,28 @@ export class Blog extends React.Component {
     constructor(){
         super();
         this.state = {
-            content: []
+            blog: [],
+            current_blog_id: null
         }
     }
     componentDidMount(){
+        window.scrollTo(0, 0);
         const { blog_id } = this.props.match.params;
+        this.fetchBlogs(blog_id);
+    }
+    componentDidUpdate() {
+        window.scrollTo(0, 0)
+        const { blog_id } = this.props.match.params;
+        if(blog_id !== this.state.current_blog_id && this.state.current_blog_id !== null){
+            this.fetchBlogs(blog_id);
+        }
+    }
+    fetchBlogs(blog_id){
         axios.get(`/api/blog/${blog_id}`).then(response => {
-            const blog = response.data.data;
+            const blogContent = response.data.data;
             this.setState({
-                content: blog
+                blog: blogContent,
+                current_blog_id: blog_id
             });
         })
     }
@@ -60,7 +73,7 @@ export class Blog extends React.Component {
     }
 
     render() {
-        const blog_content = this.state.content
+        const blog_content = this.state.blog
         return (
             <React.Fragment>
                 <section className="container mt-4">

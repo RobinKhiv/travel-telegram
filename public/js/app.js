@@ -8519,7 +8519,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".font-size-lg{\r\n    font-size: 1.2em;\r\n}\r\n@media only screen and (min-width: 600px ){\r\n\r\n    .height-large-resp{\r\n        height: 18rem;\r\n        -o-object-fit: fill;\r\n           object-fit: fill;\r\n    }\r\n    .col-4half-resp{\r\n        height: 8.5rem;\r\n        -o-object-fit: cover;\r\n           object-fit: cover;\r\n    }\r\n}", ""]);
+exports.push([module.i, ".font-size-lg{\r\n    font-size: 1.2em;\r\n}\r\n@media only screen and (min-width: 678px ){\r\n\r\n    .height-large-resp{\r\n        height: 18rem;\r\n        -o-object-fit: fill;\r\n           object-fit: fill;\r\n    }\r\n    .col-4half-resp{\r\n        height: 8.5rem;\r\n        -o-object-fit: cover;\r\n           object-fit: cover;\r\n    }\r\n}", ""]);
 
 // exports
 
@@ -77638,11 +77638,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./App */ "./resources/js/components/App.js");
-/* harmony import */ var _css_BlogCard_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../css/BlogCard.css */ "./resources/css/BlogCard.css");
-/* harmony import */ var _css_BlogCard_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_css_BlogCard_css__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _css_BlogCard_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../css/BlogCard.css */ "./resources/css/BlogCard.css");
+/* harmony import */ var _css_BlogCard_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_css_BlogCard_css__WEBPACK_IMPORTED_MODULE_2__);
 
-
+ // import App from './App';
 
 
 
@@ -77670,9 +77669,11 @@ var blog_card = function blog_card(props) {
     alt: cardImage.alt
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     "class": "card-body"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/blog/".concat(props.blog_id)
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
     className: "card-title"
-  }, props.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+  }, props.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "card-text"
   }, text), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "mx-auto"
@@ -77737,10 +77738,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _js_components_App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../js/components/App */ "./resources/js/components/App.js");
 
-
-
+ // import App from '../../js/components/App';
 
 var navigation = function navigation() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
@@ -77771,7 +77770,7 @@ var navigation = function navigation() {
   }, "Home")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     "class": "nav-item dropdown"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/travel",
+    to: "/fddd647d-7dd3-4faa-87f6-eaa38ede0f88",
     "class": "nav-link dropdown-toggle",
     id: "navbarDropdownMenuLink",
     role: "button",
@@ -77870,7 +77869,8 @@ var Blog = /*#__PURE__*/function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Blog).call(this));
     _this.state = {
-      content: []
+      blog: [],
+      current_blog_id: null
     };
     return _this;
   }
@@ -77878,14 +77878,31 @@ var Blog = /*#__PURE__*/function (_React$Component) {
   _createClass(Blog, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      window.scrollTo(0, 0);
+      var blog_id = this.props.match.params.blog_id;
+      this.fetchBlogs(blog_id);
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      window.scrollTo(0, 0);
+      var blog_id = this.props.match.params.blog_id;
+
+      if (blog_id !== this.state.current_blog_id && this.state.current_blog_id !== null) {
+        this.fetchBlogs(blog_id);
+      }
+    }
+  }, {
+    key: "fetchBlogs",
+    value: function fetchBlogs(blog_id) {
       var _this2 = this;
 
-      var blog_id = this.props.match.params.blog_id;
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/blog/".concat(blog_id)).then(function (response) {
-        var blog = response.data.data;
+        var blogContent = response.data.data;
 
         _this2.setState({
-          content: blog
+          blog: blogContent,
+          current_blog_id: blog_id
         });
       });
     }
@@ -77941,7 +77958,7 @@ var Blog = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var blog_content = this.state.content;
+      var blog_content = this.state.blog;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "container mt-4"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -78010,7 +78027,8 @@ var BlogCategory = /*#__PURE__*/function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(BlogCategory).call(this));
     _this.state = {
-      data: []
+      data: [],
+      current_category: null
     };
     return _this;
   }
@@ -78018,14 +78036,31 @@ var BlogCategory = /*#__PURE__*/function (_Component) {
   _createClass(BlogCategory, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      window.scrollTo(0, 0);
+      var category_id = this.props.match.params.category_id;
+      this.fetchCategories(category_id);
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      window.scrollTo(0, 0);
+      var category_id = this.props.match.params.category_id;
+
+      if (category_id !== this.state.current_category && this.state.current_category !== null) {
+        this.fetchCategories(category_id);
+      }
+    }
+  }, {
+    key: "fetchCategories",
+    value: function fetchCategories(category_id) {
       var _this2 = this;
 
-      var category_id = this.props.match.params.category_id;
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/category/".concat(category_id)).then(function (response) {
         var blogs = response.data.data;
 
         _this2.setState({
-          data: blogs
+          data: blogs,
+          current_category: category_id
         });
       });
     }
@@ -78033,7 +78068,6 @@ var BlogCategory = /*#__PURE__*/function (_Component) {
     key: "render",
     value: function render() {
       var data = this.state.data;
-      console.log(data);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_js_components_CardContainer__WEBPACK_IMPORTED_MODULE_2__["default"], {
         data: data
       });
@@ -78102,6 +78136,7 @@ var Home = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
+      window.scrollTo(0, 0);
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/blog').then(function (response) {
         var data = response.data.data;
 
