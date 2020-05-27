@@ -8,10 +8,10 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>Traveler</title>
         <!-- Styles -->
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/app.css', true) }}" rel="stylesheet">
     </head>
     <body>
         <div id="app-root"></div>
-        <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('js/app.js', true) }}" type="text/javascript"></script>
     </body>
     </html>
