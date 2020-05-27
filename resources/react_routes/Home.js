@@ -19,6 +19,9 @@ export class Home extends React.Component {
         });
       })
   }
+  componentDidUpdate() {
+    window.scrollTo(0, 0)
+  }
     render() {
       const { data } = this.state;
         return (
